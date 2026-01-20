@@ -1,191 +1,578 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bueno Consultoria</title>
-
-    <!-- Tailwind CDN -->
+    <title>Bueno Consultoria - Compra de Cotas de Consórcio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Fonte -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
-
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
       body {
         font-family: "Inter", sans-serif;
-      }
-      html {
         scroll-behavior: smooth;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(135deg, #580202 0%, #3f3f3f 100%);
+      }
+
+      .card-hover:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+      }
+
+      .pix-glow {
+        animation: pulse-red 2s infinite;
+      }
+
+      @keyframes pulse-red {
+        0% {
+          box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(185, 28, 28, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(185, 28, 28, 0);
+        }
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
       }
     </style>
   </head>
-
-  <body class="bg-slate-50 text-slate-900">
-    <!-- NAVBAR -->
-    <nav class="fixed w-full bg-white shadow z-50">
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-center"
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
       >
-        <span class="text-lg sm:text-2xl font-bold">
-          BUENO <span class="text-[#800020] font-light">CONSULTORIA</span>
-        </span>
+        <div class="flex items-center space-x-2">
+          <div class="bg-red-700 p-2 rounded-lg text-white">
+            <i class="fas fa-hand-holding-dollar text-xl"></i>
+          </div>
+          <span class="text-2xl font-bold text-slate-800"
+            >Bueno <span class="text-red-700">Consultoria</span></span
+          >
+        </div>
+        <nav class="hidden md:flex space-x-8 font-medium">
+          <a href="#inicio" class="hover:text-red-700 transition">Início</a>
+          <a href="#servicos" class="hover:text-red-700 transition"
+            >O que Compramos</a
+          >
+          <a href="#processo" class="hover:text-red-700 transition"
+            >Como Funciona</a
+          >
+          <a
+            href="#formulario-topo"
+            class="bg-red-700 text-white px-5 py-2 rounded-full hover:bg-red-800 transition"
+            >Vender Agora</a
+          >
+        </nav>
+        <button class="md:hidden text-2xl text-red-700">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
-    </nav>
+    </header>
 
-    <!-- HERO + FORM -->
-    <section class="pt-28 sm:pt-36 pb-16 sm:pb-20 px-4 sm:px-6">
+    <!-- Hero Section -->
+    <section id="inicio" class="gradient-bg text-white py-12 md:py-20">
       <div
-        class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+        class="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12"
       >
-        <!-- TEXTO -->
-        <div class="text-center md:text-left">
-          <span
-            class="inline-block bg-[#800020]/10 text-[#800020] px-4 py-1 rounded-full text-xs sm:text-sm font-semibold mb-4"
-          >
-            Compra de Consórcios
-          </span>
-
-          <h1
-            class="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"
-          >
-            Transforme sua carta de consórcio em
-            <span class="text-[#800020]">dinheiro no mesmo dia</span>
+        <div class="lg:w-1/2 mb-10 lg:mb-0 text-center lg:text-left">
+          <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+            Dinheiro na mão pela sua
+            <span class="text-red-300">Cota de Consórcio</span>
           </h1>
-
-          <p class="text-base sm:text-lg text-slate-600 mb-4">
-            Somos uma empresa especializada na compra de cartas de consórcio
-            <strong>canceladas, contempladas, excluídas ou em atraso</strong>,
-            para <strong>imóveis e veículos</strong>.
+          <p class="text-lg text-red-100 mb-8 max-w-lg mx-auto lg:mx-0">
+            A Bueno Consultoria compra qualquer tipo de carta: contemplada,
+            cancelada, ativa ou em atraso. Receba sua proposta e o pagamento via
+            Pix.
           </p>
 
-          <p class="text-base sm:text-lg text-slate-600 mb-4">
-            Trabalhamos com <strong>pagamento via PIX no mesmo dia</strong>, sem
-            burocracia, com <strong>propostas justas</strong> de acordo com o
-            mercado.
-          </p>
+          <div class="hidden lg:grid grid-cols-2 gap-4 text-sm text-red-200">
+            <span class="flex items-center"
+              ><i class="fas fa-check-circle text-emerald-400 mr-2"></i>
+              Pagamento imediato via Pix</span
+            >
+            <span class="flex items-center"
+              ><i class="fas fa-check-circle text-emerald-400 mr-2"></i>
+              Avaliação sem compromisso</span
+            >
+            <span class="flex items-center"
+              ><i class="fas fa-check-circle text-emerald-400 mr-2"></i>
+              Processo 100% digital</span
+            >
+            <span class="flex items-center"
+              ><i class="fas fa-check-circle text-emerald-400 mr-2"></i>
+              Segurança jurídica</span
+            >
+          </div>
 
-          <p class="text-base sm:text-lg text-slate-600">
-            Realizamos <strong>cotações gratuitas</strong>, com retorno rápido e
-            total transparência em todo o processo.
-          </p>
+          <div class="mt-8 flex justify-center lg:justify-start">
+            <a
+              href="https://wa.me/5511999999999"
+              class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-xl font-bold text-center transition"
+            >
+              <i class="fab fa-whatsapp mr-2 text-emerald-400"></i> Falar com
+              Especialista
+            </a>
+          </div>
         </div>
 
-        <!-- FORMULÁRIO -->
-        <div
-          id="contato"
-          class="bg-white p-6 sm:p-8 rounded-3xl shadow-xl border"
-        >
-          <h3 class="text-xl sm:text-2xl font-bold text-center mb-2">
-            Cotação Gratuita
-          </h3>
+        <!-- Form in Hero -->
+        <div class="lg:w-1/2 w-full max-w-2xl" id="formulario-topo">
+          <div
+            class="bg-white p-6 md:p-8 rounded-3xl shadow-2xl text-slate-800"
+          >
+            <div class="flex justify-between items-center mb-6">
+              <h3 class="font-bold text-xl text-red-900">Venda sua Carta</h3>
+              <span
+                class="bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full flex items-center"
+              >
+                <i class="fas fa-bolt mr-1"></i> PAGAMENTO PIX
+              </span>
+            </div>
 
-          <p class="text-center text-slate-500 text-sm mb-6">
-            Preencha os dados e receba sua proposta sem compromisso
-          </p>
+            <form id="heroEvaluationForm" class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="text-xs font-bold text-gray-500 uppercase"
+                    >Nome Completo</label
+                  >
+                  <input
+                    type="text"
+                    name="nome"
+                    required
+                    placeholder="Seu nome"
+                    class="w-full mt-1 p-3 border rounded-lg bg-gray-50"
+                  />
+                </div>
+                <div>
+                  <label class="text-xs font-bold text-gray-500 uppercase"
+                    >WhatsApp / Telefone</label
+                  >
+                  <input
+                    type="tel"
+                    name="whatsapp"
+                    required
+                    placeholder="(00) 00000-0000"
+                    class="w-full mt-1 p-3 border rounded-lg bg-gray-50"
+                  />
+                </div>
+              </div>
 
-          <form id="telegramForm" class="space-y-4">
-            <input
-              id="nome"
-              required
-              placeholder="Nome completo"
-              class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#800020] outline-none"
-            />
+              <div>
+                <label class="text-xs font-bold text-gray-500 uppercase"
+                  >E-mail</label
+                >
+                <input
+                  type="email"
+                  required
+                  placeholder="seu@email.com"
+                  class="w-full mt-1 p-3 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-red-600 outline-none transition"
+                />
+              </div>
 
-            <input
-              id="whatsapp"
-              required
-              placeholder="WhatsApp"
-              class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#800020] outline-none"
-            />
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label class="text-xs font-bold text-gray-500 uppercase"
+                    >Valor do Crédito</label
+                  >
+                  <input
+                    type="text"
+                    name="valor"
+                    required
+                    placeholder="R$ 0,00"
+                    class="w-full mt-1 p-3 border rounded-lg bg-gray-50"
+                  />
+                </div>
+                <div>
+                  <label class="text-xs font-bold text-gray-500 uppercase"
+                    >Valor Total Pago</label
+                  >
+                  <input
+                    type="text"
+                    required
+                    placeholder="R$ 0,00"
+                    class="w-full mt-1 p-3 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-red-600 outline-none transition"
+                  />
+                </div>
+              </div>
 
-            <input
-              id="valor"
-              required
-              placeholder="Valor do crédito (R$)"
-              class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#800020] outline-none"
-            />
+              <div>
+                <select
+                  name="tipo"
+                  required
+                  class="w-full mt-1 p-3 border rounded-lg bg-gray-50"
+                >
+                  <option value="Contemplada">Contemplada</option>
+                  <option value="Cancelada">Cancelada / Excluída</option>
+                  <option value="Ativa">Ativa (Em dia)</option>
+                  <option value="Atraso">Em Atraso / Negativa</option>
+                </select>
+              </div>
 
-            <select
-              id="tipo"
-              class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-[#800020] outline-none bg-white"
+              <button
+                type="submit"
+                class="w-full py-4 bg-red-700 text-white rounded-xl font-bold hover:bg-red-800 shadow-lg transition transform active:scale-95 pix-glow mt-4"
+              >
+                ENVIAR FORMULÁRIO
+              </button>
+              <p class="text-[10px] text-center text-gray-400 mt-2">
+                Ao enviar, você concorda com nossos termos de privacidade.
+                Avaliação em até 60 min.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="servicos" class="py-20 bg-white">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">
+          Qualquer segmento, qualquer situação
+        </h2>
+        <p class="text-gray-600 mb-16 max-w-2xl mx-auto">
+          Compramos cotas de consórcio de Imóveis, Veículos, Caminhões, Motos e
+          Serviços de todas as administradoras.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Card 1 -->
+          <div
+            class="p-8 border border-gray-100 rounded-2xl bg-gray-50 card-hover text-left"
+          >
+            <div
+              class="w-12 h-12 bg-red-100 text-red-700 rounded-xl flex items-center justify-center mb-6"
             >
-              <option value="Contemplado">Contemplado</option>
-              <option value="Cancelado">Cancelado</option>
-              <option value="Excluído">Excluído</option>
-              <option value="Em atraso">Em atraso</option>
-            </select>
+              <i class="fas fa-trophy text-xl"></i>
+            </div>
+            <h3 class="font-bold text-xl mb-3">Contempladas</h3>
+            <p class="text-gray-600">
+              Pagamos o melhor valor de mercado pelo seu ágio de cartas já
+              sorteadas ou por lance.
+            </p>
+          </div>
 
-            <!-- BOTÃO ENVIAR -->
-            <button
-              type="submit"
-              class="w-full bg-[#800020] text-white py-4 rounded-xl font-bold hover:bg-[#600018]"
+          <!-- Card 2 -->
+          <div
+            class="p-8 border border-gray-100 rounded-2xl bg-gray-50 card-hover text-left"
+          >
+            <div
+              class="w-12 h-12 bg-red-100 text-red-800 rounded-xl flex items-center justify-center mb-6"
             >
-              Enviar para Cotação
-            </button>
+              <i class="fas fa-ban text-xl"></i>
+            </div>
+            <h3 class="font-bold text-xl mb-3">Canceladas</h3>
+            <p class="text-gray-600">
+              Não espere o sorteio dos excluídos ou o fim do grupo. Compramos
+              sua cota cancelada agora.
+            </p>
+          </div>
 
-            <!-- BOTÃO WHATSAPP -->
-            <a
-              href="https://wa.me/5511998765432?text=Olá,%20quero%20uma%20cotação%20para%20venda%20da%20minha%20carta%20de%20consórcio."
-              target="_blank"
-              class="w-full block text-center border-2 border-[#25D366] text-[#25D366] py-4 rounded-xl font-bold hover:bg-[#25D366] hover:text-white transition"
+          <!-- Card 3 -->
+          <div
+            class="p-8 border border-gray-100 rounded-2xl bg-gray-50 card-hover text-left"
+          >
+            <div
+              class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-6"
             >
-              📱 Falar direto no WhatsApp
-            </a>
-          </form>
+              <i class="fas fa-chart-line text-xl"></i>
+            </div>
+            <h3 class="font-bold text-xl mb-3">Ativas</h3>
+            <p class="text-gray-600">
+              Dificuldade para pagar as parcelas? Assumimos o restante e te
+              pagamos uma parte do investido.
+            </p>
+          </div>
 
-          <!-- MENSAGEM DE OBRIGADO -->
-          <div id="mensagemObrigado" class="hidden text-center py-10">
-            <h3 class="text-2xl font-bold text-[#800020] mb-4">
-              Obrigado pelo contato!
-            </h3>
-            <p class="text-slate-600">
-              Recebemos sua solicitação. Nossa equipe entrará em contato em
-              breve pelo WhatsApp.
+          <!-- Card 4 -->
+          <div
+            class="p-8 border border-gray-100 rounded-2xl bg-gray-50 card-hover text-left"
+          >
+            <div
+              class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-exclamation-triangle text-xl"></i>
+            </div>
+            <h3 class="font-bold text-xl mb-3">Em Atraso</h3>
+            <p class="text-gray-600">
+              Mesmo com parcelas em aberto ou situação negativa, avaliamos e
+              compramos sua cota.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-950 text-slate-400 text-center py-8 px-4 text-sm">
-      © 2024 Bueno Consultoria — Todos os direitos reservados
+    <!-- Process Section -->
+    <section id="processo" class="py-20 bg-slate-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center text-red-900">
+          Como funciona o processo?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-red-700 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold"
+            >
+              1
+            </div>
+            <h4 class="font-bold text-xl mb-2">Simulação</h4>
+            <p class="text-gray-600">
+              Você preenche o formulário com os dados da sua cota.
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-red-700 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold"
+            >
+              2
+            </div>
+            <h4 class="font-bold text-xl mb-2">Análise</h4>
+            <p class="text-gray-600">
+              Nossa equipe avalia e envia a melhor oferta do mercado.
+            </p>
+          </div>
+          <div class="text-center">
+            <div
+              class="w-16 h-16 bg-red-700 text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold"
+            >
+              3
+            </div>
+            <h4 class="font-bold text-xl mb-2">Pagamento</h4>
+            <p class="text-gray-600">
+              Após a assinatura do termo será efetuado o pagamento.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="py-20 bg-white">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-16">
+          <div class="md:w-1/2">
+            <div class="relative">
+              <div
+                class="absolute inset-0 bg-red-700 rounded-3xl translate-x-4 translate-y-4 -z-10"
+              ></div>
+              <img
+                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="Finance Business"
+                class="rounded-3xl shadow-xl relative z-10"
+              />
+            </div>
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold mb-6 text-red-900">
+              Por que vender para a Bueno Consultoria?
+            </h2>
+            <ul class="space-y-6">
+              <li class="flex items-start">
+                <div
+                  class="bg-red-700 text-white p-2 rounded-full mr-4 flex-shrink-0"
+                >
+                  <i class="fas fa-check text-xs"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Liquidez Imediata</h4>
+                  <p class="text-gray-600">
+                    Não espere anos para recuperar seu dinheiro. Nós antecipamos
+                    o valor pra você agora via Pix.
+                  </p>
+                </div>
+              </li>
+              <li class="flex items-start">
+                <div
+                  class="bg-red-700 text-white p-2 rounded-full mr-4 flex-shrink-0"
+                >
+                  <i class="fas fa-check text-xs"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Processo Digital</h4>
+                  <p class="text-gray-600">
+                    Tudo resolvido de forma online e rápida, com toda a
+                    segurança jurídica necessária.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div class="col-span-1 md:col-span-1">
+            <div class="flex items-center space-x-2 text-white mb-6">
+              <div class="bg-red-700 p-1.5 rounded text-white">
+                <i class="fas fa-hand-holding-dollar"></i>
+              </div>
+              <span class="text-xl font-bold">Bueno Consultoria</span>
+            </div>
+            <p class="text-sm">
+              Especialistas na compra de cotas de consórcio em todo o Brasil.
+              Garantindo agilidade e transparência no seu pagamento.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-white font-bold mb-6">Navegação</h4>
+            <ul class="space-y-4 text-sm">
+              <li><a href="#inicio" class="hover:text-red-500">Início</a></li>
+              <li>
+                <a href="#servicos" class="hover:text-red-500"
+                  >O que Compramos</a
+                >
+              </li>
+              <li>
+                <a href="#processo" class="hover:text-red-500">Como Funciona</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-bold mb-6">Legal</h4>
+            <ul class="space-y-4 text-sm">
+              <li><a href="#" class="hover:text-red-500">Termos de Uso</a></li>
+              <li>
+                <a href="#" class="hover:text-red-500"
+                  >Política de Privacidade</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-bold mb-6">Contato</h4>
+            <ul class="space-y-4 text-sm">
+              <li class="flex items-center">
+                <i class="fas fa-envelope mr-3 text-red-600"></i>
+                contato@limaconsultoria.com.br
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-phone mr-3 text-red-600"></i> (11) 99999-9999
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-slate-900 text-center text-xs">
+          <p>
+            &copy; 2024 Bueno Consultoria Compra de Consórcios LTDA. CNPJ:
+            00.000.000/0001-00
+          </p>
+          <div class="mt-4 flex justify-center space-x-6 text-xl">
+            <i class="fab fa-pix text-emerald-500" title="Pix"></i>
+          </div>
+        </div>
+      </div>
     </footer>
 
-    <!-- SCRIPT -->
-    <script>
-      const form = document.getElementById("telegramForm");
-      const obrigado = document.getElementById("mensagemObrigado");
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+      <div class="bg-white p-8 rounded-3xl max-w-sm w-full mx-4 text-center">
+        <div
+          class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6"
+        >
+          <i class="fas fa-check text-3xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">Dados Recebidos!</h3>
+        <p class="text-gray-600 mb-8">
+          A equipe da Bueno Consultoria fará a análise técnica e enviará a
+          proposta no seu WhatsApp em até 60 minutos.
+        </p>
+        <button
+          onclick="closeModal()"
+          class="w-full py-4 bg-red-700 text-white rounded-xl font-bold hover:bg-red-800 transition"
+        >
+          Entendi
+        </button>
+      </div>
+    </div>
 
-      form.addEventListener("submit", async (e) => {
+    <!-- Floating WhatsApp -->
+    <a
+      href="https://wa.me/5511999999999"
+      class="fixed bottom-6 right-6 bg-emerald-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-emerald-600 transition z-50"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+      const form = document.getElementById("heroEvaluationForm");
+      const modal = document.getElementById("successModal");
+
+      form.addEventListener("submit", async function (e) {
         e.preventDefault();
 
+        const btn = form.querySelector("button");
+        const originalText = btn.innerText;
+        btn.disabled = true;
+        btn.innerText = "ENVIANDO...";
+
+        const formData = new FormData(form);
+
         const data = {
-          nome: document.getElementById("nome").value,
-          whatsapp: document.getElementById("whatsapp").value,
-          valor: document.getElementById("valor").value,
-          tipo: document.getElementById("tipo").value,
+          nome: formData.get("nome"),
+          whatsapp: formData.get("whatsapp"),
+          valor: formData.get("valor"),
+          tipo: formData.get("tipo"),
         };
 
         try {
           const response = await fetch("/send", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify(data),
           });
 
-          if (!response.ok) throw new Error();
+          if (!response.ok) {
+            throw new Error("Erro ao enviar");
+          }
 
-          form.classList.add("hidden");
-          obrigado.classList.remove("hidden");
-        } catch {
+          modal.style.display = "flex";
+          form.reset();
+        } catch (error) {
           alert("Erro ao enviar. Tente novamente.");
+          console.error(error);
+        } finally {
+          btn.disabled = false;
+          btn.innerText = originalText;
         }
       });
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          closeModal();
+        }
+      };
     </script>
   </body>
 </html>
